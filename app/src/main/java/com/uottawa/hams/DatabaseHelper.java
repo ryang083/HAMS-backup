@@ -5,10 +5,12 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+// DatabaseHelper.java
 public class DatabaseHelper extends SQLiteOpenHelper {
     static final String DATABASE_NAME = "HAMS.DB";
-    static final int DATABASE_VERSION =  1;
+    static final int DATABASE_VERSION = 1;
 
+    // Table for patient registration
     static final String DATABASE_TABLE = "PATIENT_INFO";
     static final String P_FN = "p_firstname";
     static final String P_LN = "p_lastname";
@@ -18,7 +20,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     static final String P_ADDRESS = "p_address";
     static final String P_HCNUM = "p_healthcardnum";
 
-    private static final String CREATE_DB_QUERY = "CREATE TABLE " + DATABASE_TABLE + " ("
+    // Table for doctor registration
+    static final String DATABASE_TABLE_DOCTOR = "DOCTOR_INFO";
+    static final String D_FN = "d_firstname";
+    static final String D_LN = "d_lastname";
+    static final String D_EA = "d_emailaddress";
+    static final String D_PWD = "d_password";
+    static final String D_PNUM = "d_phonenumber";
+    static final String D_ADDRESS = "d_address";
+    static final String D_EMPLOYEE_NUM = "d_employeenum";
+    static final String D_SPECIALTIES = "d_specialties";
+
+    private static final String CREATE_PATIENT_TABLE_QUERY = "CREATE TABLE " + DATABASE_TABLE + " ("
             + P_FN + " TEXT NOT NULL, "
             + P_LN + " TEXT NOT NULL, "
             + P_EA + " TEXT NOT NULL, "
@@ -27,20 +40,30 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + P_ADDRESS + " TEXT NOT NULL, "
             + P_HCNUM + " TEXT NOT NULL);";
 
-    public DatabaseHelper( Context context) {
-        super(context,DATABASE_TABLE, null, DATABASE_VERSION );
+    private static final String CREATE_DOCTOR_TABLE_QUERY = "CREATE TABLE " + DATABASE_TABLE_DOCTOR + " ("
+            + D_FN + " TEXT NOT NULL, "
+            + D_LN + " TEXT NOT NULL, "
+            + D_EA + " TEXT NOT NULL, "
+            + D_PWD + " TEXT NOT NULL, "
+            + D_PNUM + " TEXT NOT NULL, "
+            + D_ADDRESS + " TEXT NOT NULL, "
+            + D_EMPLOYEE_NUM + " TEXT NOT NULL, "
+            + D_SPECIALTIES + " TEXT NOT NULL);";
+
+    public DatabaseHelper(Context context) {
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        Log.i("DATABASE_TAG", CREATE_DB_QUERY);
-        db.execSQL(CREATE_DB_QUERY) ;
+        db.execSQL(CREATE_PATIENT_TABLE_QUERY);
+        db.execSQL(CREATE_DOCTOR_TABLE_QUERY);
     }
+
     @Override
-    public void onUpgrade (SQLiteDatabase db, int oldVersion, int newVersion) {
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE);
+        db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE_DOCTOR);
         onCreate(db);
     }
-
-
 }
