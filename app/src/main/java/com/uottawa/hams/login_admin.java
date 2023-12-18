@@ -20,7 +20,7 @@ public class login_admin extends AppCompatActivity {
 
         TextView username = (TextView) findViewById(R.id.p_admin_username);
         TextView password = (TextView) findViewById(R.id.p_admin_password);
-        MaterialButton loginbtn = (MaterialButton) findViewById(R.id.b_admin_login);
+        Button loginbtn = (android.widget.Button) findViewById(R.id.b_admin_login);
 
         loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -31,7 +31,7 @@ public class login_admin extends AppCompatActivity {
 
                     loginbtn.setOnClickListener(new View.OnClickListener(){
                         public void onClick(View v){
-                            Intent intent = new Intent (login_admin.this, welcome_administrator.class);
+                            Intent intent = new Intent (login_admin.this, menu_admin.class);
                             startActivity(intent);
                         }
                     });

@@ -31,13 +31,13 @@ public class registration_patient extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration_patient);
 
-        editP_FirstName = findViewById(R.id.d_input_firstname);
-        editP_LastName = findViewById(R.id.d_input_lastname);
-        editP_EmailAddress = findViewById(R.id.d_input_email);
-        editP_Password = findViewById(R.id.d_input_password);
-        editP_PhoneNumber = findViewById(R.id.d_input_phonenum);
-        editP_Address = findViewById(R.id.d_input_address);
-        editP_HealthCardNum = findViewById(R.id.d_input_healthcardnum);
+        editP_FirstName = findViewById(R.id.p_input_firstname);
+        editP_LastName = findViewById(R.id.p_input_lastname);
+        editP_EmailAddress = findViewById(R.id.p_input_email);
+        editP_Password = findViewById(R.id.p_input_password);
+        editP_PhoneNumber = findViewById(R.id.p_input_phonenum);
+        editP_Address = findViewById(R.id.p_input_address);
+        editP_HealthCardNum = findViewById(R.id.p_input_healthcardnum);
 
         dbManager = new DatabaseManager(this);
         try {
@@ -46,7 +46,7 @@ public class registration_patient extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        sub_pr = findViewById(R.id.b_submit_PR);
+        sub_pr = findViewById(R.id.p_submit_PR);
         sub_pr.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Retrieve input values when the button is clicked
