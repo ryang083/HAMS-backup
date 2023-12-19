@@ -61,7 +61,7 @@ public class registration_doctor extends AppCompatActivity {
                         phoneNumber, address, employeeNum, specialties)) {
                     dbManager.insertDoctor(firstName, lastName, emailAddress, password,
                             phoneNumber, address, employeeNum, specialties);
-                    Intent intent = new Intent(registration_doctor.this, welcome_doctor.class);
+                    Intent intent = new Intent(registration_doctor.this, requestsubmitted_pleasewait.class);
                     startActivity(intent);
                     Toast.makeText(registration_doctor.this, "Registration successful!", Toast.LENGTH_SHORT).show();
                 } else {

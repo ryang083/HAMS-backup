@@ -11,6 +11,8 @@ public class menu_admin extends AppCompatActivity {
     private Button logout1;
     private Button registrationrequest1;
 
+    private Button rejectedrequest1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +29,14 @@ public class menu_admin extends AppCompatActivity {
         registrationrequest1.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 Intent intent = new Intent (menu_admin.this, recyclelist_registrationrequest.class);
+                startActivity(intent);
+            }
+        });
+
+        rejectedrequest1 = findViewById(R.id.b_rejectedrequest);
+        rejectedrequest1.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent intent = new Intent (menu_admin.this, recyclelist_rejectedrequest.class);
                 startActivity(intent);
             }
         });

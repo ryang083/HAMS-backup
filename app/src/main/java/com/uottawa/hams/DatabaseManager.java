@@ -26,6 +26,7 @@ public class DatabaseManager {
 
     public DatabaseManager(Context ctx) {
         context = ctx;
+        dbHelper = new DatabaseHelper(context);
     }
 
     public DatabaseManager open() throws SQLDataException {
@@ -181,6 +182,84 @@ public class DatabaseManager {
         String[] selectionArgs = { String.valueOf(doctorId) };
         database.update(DatabaseHelper.DATABASE_TABLE_DOCTOR, contentValues, selection, selectionArgs);
     }
+
+    public Cursor getRejectedData() {
+        String unionQuery = "SELECT 'Patient' AS user_type, id, "
+                + DatabaseHelper.P_FN + " AS first_name, " + DatabaseHelper.P_LN + " AS last_name, "
+                + DatabaseHelper.REGISTRATION_STATUS
+                + " FROM " + DatabaseHelper.DATABASE_TABLE_PATIENT
+                + " WHERE " + DatabaseHelper.REGISTRATION_STATUS + " = 'REJECTED_STATUS'"
+                + " UNION "
+                + "SELECT 'Doctor', id, "
+                + DatabaseHelper.D_FN + " AS first_name, " + DatabaseHelper.D_LN + " AS last_name, "
+                + DatabaseHelper.REGISTRATION_STATUS
+                + " FROM " + DatabaseHelper.DATABASE_TABLE_DOCTOR
+                + " WHERE " + DatabaseHelper.REGISTRATION_STATUS + " = 'REJECTED_STATUS'";
+        return database.rawQuery(unionQuery, null);
+    }
+
+    public boolean validateDoctor(String email, String password) {
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        String[] columns = { DatabaseHelper.D_EA, DatabaseHelper.D_PWD };
+        String selection = DatabaseHelper.D_EA + " =? AND " + DatabaseHelper.D_PWD + " =?";
+        String[] selectionArgs = { email, password };
+
+        Cursor cursor = db.query(DatabaseHelper.DATABASE_TABLE_DOCTOR, columns, selection, selectionArgs, null, null, null);
+        int count = cursor.getCount();
+        cursor.close();
+        db.close();
+
+        return count > 0;
+    }
+
+    public boolean validatePatient(String email, String password) {
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        String[] columns = { DatabaseHelper.P_EA, DatabaseHelper.P_PWD };
+        String selection = DatabaseHelper.P_EA + " =? AND " + DatabaseHelper.P_PWD + " =?";
+        String[] selectionArgs = { email, password };
+
+        Cursor cursor = db.query(DatabaseHelper.DATABASE_TABLE_PATIENT, columns, selection, selectionArgs, null, null, null);
+        int count = cursor.getCount();
+        cursor.close();
+        db.close();
+
+        return count > 0;
+    }
+
+    public String getDoctorRegistrationStatus(String email) {
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        String[] columns = { DatabaseHelper.REGISTRATION_STATUS };
+        String selection = DatabaseHelper.D_EA + " =?";
+        String[] selectionArgs = { email };
+        Cursor cursor = db.query(DatabaseHelper.DATABASE_TABLE_DOCTOR, columns, selection, selectionArgs, null, null, null);
+
+        String status = null;
+        if (cursor != null && cursor.moveToFirst()) {
+            status = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.REGISTRATION_STATUS));
+            cursor.close();
+        }
+        db.close();
+        return status;
+    }
+
+    public String getPatientRegistrationStatus(String email) {
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        String[] columns = { DatabaseHelper.REGISTRATION_STATUS };
+        String selection = DatabaseHelper.P_EA + " =?";
+        String[] selectionArgs = { email };
+        Cursor cursor = db.query(DatabaseHelper.DATABASE_TABLE_PATIENT, columns, selection, selectionArgs, null, null, null);
+
+        String status = null;
+        if (cursor != null && cursor.moveToFirst()) {
+            status = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.REGISTRATION_STATUS));
+            cursor.close();
+        }
+        db.close();
+        return status;
+    }
+
+
+
 
 
     }

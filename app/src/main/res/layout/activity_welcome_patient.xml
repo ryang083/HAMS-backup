@@ -8,9 +8,22 @@
 
     <TextView
         android:id="@+id/textView15"
+        android:layout_width="253dp"
+        android:layout_height="15dp"
+        android:text="Welcome! You are logged in as Patient."
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.23" />
+
+    <Button
+        android:id="@+id/b_p_mainmenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Welcome! You are logged in as Patient."
-        tools:layout_editor_absoluteX="134dp"
-        tools:layout_editor_absoluteY="194dp" />
+        android:text="Main Menu"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

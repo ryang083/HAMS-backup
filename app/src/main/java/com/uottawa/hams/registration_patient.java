@@ -61,7 +61,7 @@ public class registration_patient extends AppCompatActivity {
                 // Validate and insert data into the database
                 if (InputValidator.isPatientInputValid(firstName, lastName, emailAddress, password, phoneNumber, address, healthCardNum)) {
                     dbManager.insertPatient(firstName, lastName, emailAddress, password, phoneNumber, address, healthCardNum);
-                    Intent intent = new Intent(registration_patient.this, welcome_patient.class);
+                    Intent intent = new Intent(registration_patient.this, requestsubmitted_pleasewait.class);
                     startActivity(intent);
                     Toast.makeText(registration_patient.this, "Registration successful!", Toast.LENGTH_SHORT).show();
                 } else {

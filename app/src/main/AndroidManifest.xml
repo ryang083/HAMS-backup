@@ -13,6 +13,24 @@
         android:theme="@style/Theme.HAMS"
         tools:targetApi="31">
         <activity
+            android:name=".request_rejected"
+            android:exported="false" />
+        <activity
+            android:name=".request_notprocesssedyet"
+            android:exported="false" />
+        <activity
+            android:name=".requestsubmitted_pleasewait"
+            android:exported="false" />
+        <activity
+            android:name=".rejectedpatient_detailinfo"
+            android:exported="false" />
+        <activity
+            android:name=".rejecteddoctor_detailinfo"
+            android:exported="false" />
+        <activity
+            android:name=".recyclelist_rejectedrequest"
+            android:exported="false" />
+        <activity
             android:name=".patient_detailinfo"
             android:exported="false" />
         <activity
@@ -73,7 +91,6 @@
         <activity
             android:name=".view_patient"
             android:exported="false" />
-
         <activity
             android:name=".MainActivity"
             android:exported="true">

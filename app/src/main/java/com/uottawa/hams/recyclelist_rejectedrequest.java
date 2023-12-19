@@ -1,46 +1,39 @@
 package com.uottawa.hams;
 
-
-
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class recyclelist_registrationrequest extends AppCompatActivity {
+public class recyclelist_rejectedrequest extends AppCompatActivity {
+
     RecyclerView recyclerView;
     ArrayList<String> userType, firstName, lastName, userId;
     DatabaseManager DB;
     MyAdapter adapter;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_recyclelist_registrationrequest);
+        setContentView(R.layout.activity_recyclelist_rejectedrequest); // Use an appropriate layout
         DB = new DatabaseManager(this);
         try {
             DB.open(); // Open the database
         } catch (Exception e) {
-            Log.e("recyclelist_registrationrequest", "Error opening database", e);
+            Log.e("recyclelist_rejectedrequest", "Error opening database", e);
+            // Handle the error or finish the activity
         }
         userType = new ArrayList<>();
         firstName = new ArrayList<>();
         lastName = new ArrayList<>();
         userId = new ArrayList<>();
-        recyclerView = findViewById(R.id.recyclerview1);
+        recyclerView = findViewById(R.id.recyclerview1); // Ensure this ID is in your layout
         adapter = new MyAdapter(this, userType, firstName, lastName, userId);
 
         adapter.setSelectListener(new MyAdapter.SelectListener() {
@@ -50,9 +43,9 @@ public class recyclelist_registrationrequest extends AppCompatActivity {
                 String selectedUserType = userType.get(position);
 
                 if ("Patient".equals(selectedUserType)) {
-                    intent = new Intent(recyclelist_registrationrequest.this, patient_detailinfo.class);
+                    intent = new Intent(recyclelist_rejectedrequest.this, rejectedpatient_detailinfo.class);
                 } else if ("Doctor".equals(selectedUserType)) {
-                    intent = new Intent(recyclelist_registrationrequest.this, doctor_detailinfo.class);
+                    intent = new Intent(recyclelist_rejectedrequest.this, rejecteddoctor_detailinfo.class);
                 } else {
                     return; // Handle unexpected user type
                 }
@@ -62,18 +55,16 @@ public class recyclelist_registrationrequest extends AppCompatActivity {
             }
         });
 
-
+        // Set up the adapter and RecyclerView as before
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         displaydata();
-
-
-
     }
 
+    @Override
     protected void onResume() {
         super.onResume();
-        refreshData(); // Refresh your data whenever the activity resumes
+        refreshData();
     }
 
     private void refreshData() {
@@ -85,9 +76,10 @@ public class recyclelist_registrationrequest extends AppCompatActivity {
     }
 
     private void displaydata() {
-        Cursor cursor = DB.getdata();
+        Cursor cursor = DB.getRejectedData();
         if (cursor != null && cursor.moveToFirst()) {
             do {
+                // Load data as before
                 String userType = cursor.getString(cursor.getColumnIndexOrThrow("user_type"));
                 String firstName = cursor.getString(cursor.getColumnIndexOrThrow("first_name"));
                 String lastName = cursor.getString(cursor.getColumnIndexOrThrow("last_name"));
@@ -98,16 +90,8 @@ public class recyclelist_registrationrequest extends AppCompatActivity {
                 this.lastName.add(lastName);
                 this.userId.add(userId);
             } while (cursor.moveToNext());
-            cursor.close(); // Close the cursor after use
+            cursor.close();
         }
-
         adapter.notifyDataSetChanged();
     }
-
-    }
-
-
-
-
-
-
+}
