@@ -13,6 +13,12 @@
         android:theme="@style/Theme.HAMS"
         tools:targetApi="31">
         <activity
+            android:name=".patient_detailinfo"
+            android:exported="false" />
+        <activity
+            android:name=".doctor_detailinfo"
+            android:exported="false" />
+        <activity
             android:name=".recyclelist_registrationrequest"
             android:exported="false" />
         <activity
@@ -31,7 +37,6 @@
             android:name=".menu_admin"
             android:exported="false"
             android:label="@string/title_activity_menu_admin" />
-
         <activity
             android:name=".InputValidator"
             android:exported="false" />
@@ -68,9 +73,7 @@
         <activity
             android:name=".view_patient"
             android:exported="false" />
-        <activity
-            android:name=".List_registrationRequest"
-            android:exported="false" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true">

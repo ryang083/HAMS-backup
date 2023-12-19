@@ -8,7 +8,7 @@ import android.util.Log;
 // DatabaseHelper.java
 public class DatabaseHelper extends SQLiteOpenHelper {
     static final String DATABASE_NAME = "HAMS.DB";
-    static final int DATABASE_VERSION = 2;
+    static final int DATABASE_VERSION = 3;
 
     // Table for patient registration
     static final String DATABASE_TABLE_PATIENT = "PATIENT_INFO";
@@ -35,7 +35,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     static final String REGISTRATION_STATUS = "registration_status";
     static final String DEFAULT_STATUS = "NotProcessedYet";
 
-    private static final String CREATE_PATIENT_TABLE_QUERY = "CREATE TABLE " + DATABASE_TABLE_PATIENT + " ("
+    private static final String CREATE_PATIENT_TABLE_QUERY = "CREATE TABLE " + DATABASE_TABLE_PATIENT + " ("+ "id INTEGER PRIMARY KEY AUTOINCREMENT, "
             + P_FN + " TEXT NOT NULL, "
             + P_LN + " TEXT NOT NULL, "
             + P_EA + " TEXT NOT NULL, "
@@ -45,7 +45,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + P_HCNUM + " TEXT NOT NULL, "
             + REGISTRATION_STATUS + " TEXT NOT NULL DEFAULT '" + DEFAULT_STATUS + "');";
 
-    private static final String CREATE_DOCTOR_TABLE_QUERY = "CREATE TABLE " + DATABASE_TABLE_DOCTOR + " ("
+    private static final String CREATE_DOCTOR_TABLE_QUERY = "CREATE TABLE " + DATABASE_TABLE_DOCTOR + " (" + "id INTEGER PRIMARY KEY AUTOINCREMENT, "
             + D_FN + " TEXT NOT NULL, "
             + D_LN + " TEXT NOT NULL, "
             + D_EA + " TEXT NOT NULL, "

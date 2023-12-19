@@ -1,5 +1,8 @@
 package com.uottawa.hams;
 
+import static com.uottawa.hams.DatabaseHelper.DATABASE_TABLE_DOCTOR;
+import static com.uottawa.hams.DatabaseHelper.DATABASE_TABLE_PATIENT;
+import static com.uottawa.hams.DatabaseHelper.REGISTRATION_STATUS;
 import static com.uottawa.hams.InputValidator.isInputValid;
 import static com.uottawa.hams.InputValidator.isValidEmail;
 
@@ -19,6 +22,7 @@ public class DatabaseManager {
     private DatabaseHelper dbHelper;
     private Context context;
     private SQLiteDatabase database;
+
 
     public DatabaseManager(Context ctx) {
         context = ctx;
@@ -61,8 +65,8 @@ public class DatabaseManager {
             contentValues.put(DatabaseHelper.P_PNUM, p_phonenumber);
             contentValues.put(DatabaseHelper.P_ADDRESS, p_address);
             contentValues.put(DatabaseHelper.P_HCNUM, p_healthcardnum);
-            contentValues.put(DatabaseHelper.REGISTRATION_STATUS, DatabaseHelper.DEFAULT_STATUS);
-            database.insert(DatabaseHelper.DATABASE_TABLE_PATIENT, null, contentValues);
+            contentValues.put(REGISTRATION_STATUS, DatabaseHelper.DEFAULT_STATUS);
+            database.insert(DATABASE_TABLE_PATIENT, null, contentValues);
         } else {
             Toast.makeText(context, "Invalid input. Please try again.", Toast.LENGTH_SHORT).show();
         }
@@ -94,6 +98,46 @@ public class DatabaseManager {
         }
     }
 
+    public Cursor getPatientById(int patientId) {
+        if (database == null) {
+            Log.e("DatabaseManager", "Database is not opened");
+            return null;
+        }
+
+        String[] columns = new String[] {
+
+                "id", DatabaseHelper.P_FN, DatabaseHelper.P_LN, DatabaseHelper.P_EA, DatabaseHelper.P_PWD,
+                DatabaseHelper.P_PNUM, DatabaseHelper.P_ADDRESS, DatabaseHelper.P_HCNUM,
+                DatabaseHelper.REGISTRATION_STATUS
+        };
+
+        String selection = "id=?";
+        String[] selectionArgs = { String.valueOf(patientId) };
+
+        return database.query(DatabaseHelper.DATABASE_TABLE_PATIENT, columns, selection, selectionArgs, null, null, null);
+    }
+
+    public Cursor getDoctorById(int doctorId) {
+        if (database == null) {
+            Log.e("DatabaseManager", "Database is not opened");
+            return null;
+        }
+
+        String[] columns = new String[] {
+                "id", DatabaseHelper.D_FN, DatabaseHelper.D_LN, DatabaseHelper.D_EA, DatabaseHelper.D_PWD,
+                DatabaseHelper.D_PNUM, DatabaseHelper.D_ADDRESS, DatabaseHelper.D_EMPLOYEE_NUM, DatabaseHelper.D_SPECIALTIES,
+                DatabaseHelper.REGISTRATION_STATUS
+
+        };
+
+        String selection = "id=?";
+        String[] selectionArgs = { String.valueOf(doctorId) };
+
+        return database.query(DatabaseHelper.DATABASE_TABLE_DOCTOR, columns, selection, selectionArgs, null, null, null);
+    }
+
+
+
     public Cursor fetch() {
         String[] columns = new String[]{
                 DatabaseHelper.P_FN, DatabaseHelper.P_LN, DatabaseHelper.P_EA,
@@ -107,17 +151,38 @@ public class DatabaseManager {
     }
 
     public Cursor getdata() {
-        String unionQuery = "SELECT 'Patient' AS user_type, " // Change made here
+
+        String unionQuery = "SELECT 'Patient' AS user_type, id, "
                 + DatabaseHelper.P_FN + " AS first_name, " + DatabaseHelper.P_LN + " AS last_name, "
                 + DatabaseHelper.REGISTRATION_STATUS
                 + " FROM " + DatabaseHelper.DATABASE_TABLE_PATIENT
+                + " WHERE " + DatabaseHelper.REGISTRATION_STATUS + " = '" + DatabaseHelper.DEFAULT_STATUS + "'"
                 + " UNION "
-                + "SELECT 'Doctor', " // And here
+                + "SELECT 'Doctor', id, "
                 + DatabaseHelper.D_FN + " AS first_name, " + DatabaseHelper.D_LN + " AS last_name, "
                 + DatabaseHelper.REGISTRATION_STATUS
-                + " FROM " + DatabaseHelper.DATABASE_TABLE_DOCTOR;
+                + " FROM " + DatabaseHelper.DATABASE_TABLE_DOCTOR
+                + " WHERE " + DatabaseHelper.REGISTRATION_STATUS + " = '" + DatabaseHelper.DEFAULT_STATUS + "'";
         return database.rawQuery(unionQuery, null);
     }
+
+    public void updatePatientStatus(int patientId, String newStatus) {
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(DatabaseHelper.REGISTRATION_STATUS, newStatus);
+        String selection = "id=?";
+        String[] selectionArgs = { String.valueOf(patientId) };
+        database.update(DatabaseHelper.DATABASE_TABLE_PATIENT, contentValues, selection, selectionArgs);
+    }
+
+    public void updateDoctorStatus(int doctorId, String newStatus) {
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(DatabaseHelper.REGISTRATION_STATUS, newStatus);
+        String selection = "id=?";
+        String[] selectionArgs = { String.valueOf(doctorId) };
+        database.update(DatabaseHelper.DATABASE_TABLE_DOCTOR, contentValues, selection, selectionArgs);
+    }
+
+
     }
 
 

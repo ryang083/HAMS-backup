@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".registration_doctor">
+
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="294dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="38dp"
+        android:layout_marginBottom="28dp"
+        android:text="Doctor Registration Info"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/firstNameTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/phoneNumberTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="39dp"
+        android:text="Phone number"
+        app:layout_constraintBottom_toTopOf="@+id/addressTextView"
+        app:layout_constraintStart_toStartOf="@+id/passwordTextView"
+        app:layout_constraintTop_toBottomOf="@+id/passwordTextView" />
+
+    <TextView
+        android:id="@+id/employeeNumberTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="41dp"
+        android:text="Employer number"
+        app:layout_constraintBottom_toTopOf="@+id/specialtiesTextView"
+        app:layout_constraintStart_toStartOf="@+id/addressTextView"
+        app:layout_constraintTop_toBottomOf="@+id/addressTextView" />
+
+    <TextView
+        android:id="@+id/emailAddressTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:text="Email address"
+        app:layout_constraintBottom_toTopOf="@+id/passwordTextView"
+        app:layout_constraintStart_toStartOf="@+id/lastNameTextView"
+        app:layout_constraintTop_toBottomOf="@+id/lastNameTextView" />
+
+    <TextView
+        android:id="@+id/addressTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="44dp"
+        android:text="Address"
+        app:layout_constraintBottom_toTopOf="@+id/employeeNumberTextView"
+        app:layout_constraintStart_toStartOf="@+id/phoneNumberTextView"
+        app:layout_constraintTop_toBottomOf="@+id/phoneNumberTextView" />
+
+    <TextView
+        android:id="@+id/firstNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginBottom="26dp"
+        android:text="First Name"
+        app:layout_constraintBottom_toTopOf="@+id/lastNameTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+    <TextView
+        android:id="@+id/passwordTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="41dp"
+        android:text="Account password"
+        app:layout_constraintBottom_toTopOf="@+id/phoneNumberTextView"
+        app:layout_constraintStart_toStartOf="@+id/emailAddressTextView"
+        app:layout_constraintTop_toBottomOf="@+id/emailAddressTextView" />
+
+    <TextView
+        android:id="@+id/lastNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="39dp"
+        android:text="Last Name"
+        app:layout_constraintBottom_toTopOf="@+id/emailAddressTextView"
+        app:layout_constraintStart_toStartOf="@+id/firstNameTextView"
+        app:layout_constraintTop_toBottomOf="@+id/firstNameTextView" />
+
+    <TextView
+        android:id="@+id/specialtiesTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Specialties"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.14"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.692" />
+
+    <Button
+        android:id="@+id/b_Approve_d"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Approve"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.206"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.811" />
+
+    <Button
+        android:id="@+id/b_Reject_d"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reject"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.736"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.811" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

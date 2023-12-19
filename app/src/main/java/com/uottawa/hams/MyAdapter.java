@@ -13,13 +13,14 @@ import java.util.ArrayList;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     private Context context;
-    private ArrayList userType_id, firstName_id, lastName_id;
+    private ArrayList userType_id, firstName_id, lastName_id, userId_id;
 
-    public MyAdapter(Context context, ArrayList userType_id, ArrayList firstName_id, ArrayList lastName_id) {
+    public MyAdapter(Context context, ArrayList userType_id, ArrayList firstName_id, ArrayList lastName_id, ArrayList<String> userId_id) {
         this.context = context;
         this.userType_id = userType_id;
         this.firstName_id = firstName_id;
         this.lastName_id = lastName_id;
+        this.userId_id = userId_id;
     }
 
     @NonNull
@@ -34,6 +35,19 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         holder.userType_id.setText(String.valueOf(userType_id.get(position)));
         holder.firstName_id.setText(String.valueOf(firstName_id.get(position)));
         holder.lastName_id.setText(String.valueOf(lastName_id.get(position)));
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Use holder.getAdapterPosition() to get the current position
+                int currentPosition = holder.getAdapterPosition();
+                if (currentPosition != RecyclerView.NO_POSITION) {
+                    if (listener != null) {
+                        listener.onSelect(currentPosition);
+                    }
+                }
+            }
+        });
 
     }
 
@@ -51,5 +65,15 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             firstName_id = itemView.findViewById(R.id.textfirstname);
             lastName_id = itemView.findViewById(R.id.textlastname);
         }
+    }
+
+    public interface SelectListener {
+        void onSelect(int position);
+    }
+
+    private SelectListener listener;
+
+    public void setSelectListener(SelectListener listener) {
+        this.listener = listener;
     }
 }
