@@ -8,7 +8,7 @@ import android.util.Log;
 // DatabaseHelper.java
 public class DatabaseHelper extends SQLiteOpenHelper {
     static final String DATABASE_NAME = "HAMS.DB";
-    static final int DATABASE_VERSION = 3;
+    static final int DATABASE_VERSION = 6;
 
     // Table for patient registration
     static final String DATABASE_TABLE_PATIENT = "PATIENT_INFO";
@@ -35,6 +35,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     static final String REGISTRATION_STATUS = "registration_status";
     static final String DEFAULT_STATUS = "NotProcessedYet";
 
+    // Table for Appointments
+
+    static final String DATABASE_TABLE_APPOINTMENT = "APPOINTMENT_INFO";
+    static final String A_ID = "a_id";
+    static final String A_PATIENT_ID = "a_patient_id";
+    static final String A_DATE = "a_date";
+    static final String A_START_TIME = "a_start_time";
+    static final String A_END_TIME = "a_end_time";
+    static final String A_STATUS = "a_status";
+
+
+
+
+
     private static final String CREATE_PATIENT_TABLE_QUERY = "CREATE TABLE " + DATABASE_TABLE_PATIENT + " ("+ "id INTEGER PRIMARY KEY AUTOINCREMENT, "
             + P_FN + " TEXT NOT NULL, "
             + P_LN + " TEXT NOT NULL, "
@@ -56,6 +70,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + D_SPECIALTIES + " TEXT NOT NULL, "
             + REGISTRATION_STATUS + " TEXT NOT NULL DEFAULT '" + DEFAULT_STATUS + "');";
 
+    private static final String CREATE_APPOINTMENT_TABLE_QUERY = "CREATE TABLE " + DATABASE_TABLE_APPOINTMENT + " ("
+            + A_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + A_PATIENT_ID + " INTEGER NOT NULL, "
+            + A_DATE + " TEXT NOT NULL, "
+            + A_START_TIME + " TEXT NOT NULL, "
+            + A_END_TIME + " TEXT NOT NULL, "
+            + A_STATUS + " TEXT NOT NULL DEFAULT '" + DEFAULT_STATUS + "');";
+
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -64,12 +86,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_PATIENT_TABLE_QUERY);
         db.execSQL(CREATE_DOCTOR_TABLE_QUERY);
+        db.execSQL(CREATE_APPOINTMENT_TABLE_QUERY);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE_PATIENT);
         db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE_DOCTOR);
+        db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE_APPOINTMENT);
         onCreate(db);
     }
 }

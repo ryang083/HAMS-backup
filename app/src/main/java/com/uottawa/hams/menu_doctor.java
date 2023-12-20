@@ -9,6 +9,7 @@ import android.widget.Button;
 
 public class menu_doctor extends AppCompatActivity {
     private Button logout2;
+    private Button upcomingappointments1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +19,14 @@ public class menu_doctor extends AppCompatActivity {
         logout2.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 Intent intent = new Intent (menu_doctor.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        upcomingappointments1 = findViewById(R.id.b_upcomingappointments);
+        upcomingappointments1.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent intent = new Intent (menu_doctor.this, recyclelist_doctorappointments.class);
                 startActivity(intent);
             }
         });

@@ -18,6 +18,7 @@ public class login_patient extends AppCompatActivity {
     private Button loginButton;
 
     private DatabaseManager dbManager;
+    private int patientId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +50,10 @@ public class login_patient extends AppCompatActivity {
 
         if (!TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)) {
             if (dbManager.validatePatient(email, password)) {
+                // Fetching patient ID based on the email
+                patientId = dbManager.getPatientIdByEmail(email); // Implement this method in DatabaseManager
+
+                // Fetch registration status and navigate accordingly
                 String status = dbManager.getPatientRegistrationStatus(email);
                 navigateBasedOnStatus(status, "Patient");
             } else {
@@ -64,8 +69,12 @@ public class login_patient extends AppCompatActivity {
         if (DatabaseHelper.DEFAULT_STATUS.equals(status)) {
             intent = new Intent(this, request_notprocesssedyet.class);
         } else if ("APPROVED_STATUS".equals(status)) {
-            intent = userType.equals("Doctor") ? new Intent(this, welcome_doctor.class)
-                    : new Intent(this, welcome_patient.class);
+            if (userType.equals("Doctor")) {
+                intent = new Intent(this, welcome_doctor.class);
+            } else {
+                intent = new Intent(this, welcome_patient.class);
+            }
+            intent.putExtra("userID", patientId); // Ensure you have the correct patientId here
         } else if ("REJECTED_STATUS".equals(status)) {
             intent = new Intent(this, request_rejected.class);
         } else {

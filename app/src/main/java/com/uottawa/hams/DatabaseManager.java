@@ -99,6 +99,32 @@ public class DatabaseManager {
         }
     }
 
+    public void insertAppointment(int patientId, String date, String startTime, String endTime) {
+        if (database == null) {
+            Log.e("DatabaseManager", "Database is not opened");
+            return;
+        }
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(DatabaseHelper.A_PATIENT_ID, patientId);
+        contentValues.put(DatabaseHelper.A_DATE, date);
+        contentValues.put(DatabaseHelper.A_START_TIME, startTime);
+        contentValues.put(DatabaseHelper.A_END_TIME, endTime);
+        contentValues.put(DatabaseHelper.A_STATUS, DatabaseHelper.DEFAULT_STATUS);
+        database.insert(DatabaseHelper.DATABASE_TABLE_APPOINTMENT, null, contentValues);
+    }
+
+    // Fetch all appointments for a patient
+    public Cursor getPatientAppointments(int patientId) {
+        if (database == null) {
+            Log.e("DatabaseManager", "Database is not opened");
+            return null;
+        }
+        String[] columns = { DatabaseHelper.A_ID, DatabaseHelper.A_DATE, DatabaseHelper.A_START_TIME, DatabaseHelper.A_END_TIME, DatabaseHelper.A_STATUS };
+        String selection = DatabaseHelper.A_PATIENT_ID + "=?";
+        String[] selectionArgs = { String.valueOf(patientId) };
+        return database.query(DatabaseHelper.DATABASE_TABLE_APPOINTMENT, columns, selection, selectionArgs, null, null, null);
+    }
+
     public Cursor getPatientById(int patientId) {
         if (database == null) {
             Log.e("DatabaseManager", "Database is not opened");
@@ -257,6 +283,53 @@ public class DatabaseManager {
         db.close();
         return status;
     }
+
+    public int getPatientIdByEmail(String email) {
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        String[] columns = {"id"};
+        String selection = DatabaseHelper.P_EA + " =?";
+        String[] selectionArgs = {email};
+        Cursor cursor = db.query(DatabaseHelper.DATABASE_TABLE_PATIENT, columns, selection, selectionArgs, null, null, null);
+
+        int id = -1;
+        if (cursor != null && cursor.moveToFirst()) {
+            id = cursor.getInt(cursor.getColumnIndexOrThrow("id"));
+            cursor.close();
+        }
+        db.close();
+        return id;
+    }
+
+
+    public Cursor getDoctorAppointments() {
+        if (database == null) {
+            Log.e("DatabaseManager", "Database is not opened");
+            return null;
+        }
+
+        String query = "SELECT APPOINTMENT_INFO.a_id AS appointment_id, " +
+                "PATIENT_INFO.p_firstname AS first_name, PATIENT_INFO.p_lastname AS last_name, " +
+                "APPOINTMENT_INFO.a_date, APPOINTMENT_INFO.a_start_time, APPOINTMENT_INFO.a_end_time, APPOINTMENT_INFO.a_status " +
+                "FROM APPOINTMENT_INFO INNER JOIN PATIENT_INFO ON APPOINTMENT_INFO.a_patient_id = PATIENT_INFO.id";
+        return database.rawQuery(query, null);
+    }
+
+    public Cursor getAppointmentDetailsById(int appointmentId) {
+        if (database == null) {
+            Log.e("DatabaseManager", "Database is not opened");
+            return null;
+        }
+
+        String query = "SELECT a.*, p." + DatabaseHelper.P_FN + ", p." + DatabaseHelper.P_LN + ", p." + DatabaseHelper.P_EA +
+                ", p." + DatabaseHelper.P_PNUM + ", p." + DatabaseHelper.P_ADDRESS + ", p." + DatabaseHelper.P_HCNUM +
+                " FROM " + DatabaseHelper.DATABASE_TABLE_APPOINTMENT + " a" +
+                " JOIN " + DatabaseHelper.DATABASE_TABLE_PATIENT + " p" +
+                " ON a." + DatabaseHelper.A_PATIENT_ID + " = p.id" +
+                " WHERE a." + DatabaseHelper.A_ID + "=?";
+
+        return database.rawQuery(query, new String[]{String.valueOf(appointmentId)});
+    }
+
 
 
 

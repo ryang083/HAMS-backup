@@ -55,7 +55,7 @@ public class rejectedpatient_detailinfo extends AppCompatActivity {
                     firstNameTextView.setText("First Name: " + cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.P_FN)));
                     lastNameTextView.setText("Last Name: " + cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.P_LN)));
                     emailAddressTextView.setText("Email Address: " + cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.P_EA)));
-                    passwordTextView.setText("Account Password: " + cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.P_PWD)));
+                    passwordTextView.setText("Account Password: Not Available" );
                     phoneNumberTextView.setText("Phone Number: " + cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.P_PNUM)));
                     addressTextView.setText("Address: " + cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.P_ADDRESS)));
                     healthCardNumberTextView.setText("Health Card Number: " + cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.P_HCNUM)));
