@@ -71,4 +71,11 @@ public class DoctorAppointmentsAdapter extends RecyclerView.Adapter<DoctorAppoin
     public interface OnAppointmentClickListener {
         void onAppointmentClick(Appointment appointment);
     }
+
+    // Method to update the data in the adapter
+    public void updateData(ArrayList<Appointment> newAppointments) {
+        appointments.clear();
+        appointments.addAll(newAppointments);
+        notifyDataSetChanged();
+    }
 }

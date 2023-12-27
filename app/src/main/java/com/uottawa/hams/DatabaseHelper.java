@@ -8,7 +8,7 @@ import android.util.Log;
 // DatabaseHelper.java
 public class DatabaseHelper extends SQLiteOpenHelper {
     static final String DATABASE_NAME = "HAMS.DB";
-    static final int DATABASE_VERSION = 6;
+    static final int DATABASE_VERSION = 8;
 
     // Table for patient registration
     static final String DATABASE_TABLE_PATIENT = "PATIENT_INFO";
@@ -45,6 +45,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     static final String A_END_TIME = "a_end_time";
     static final String A_STATUS = "a_status";
 
+    //Table for doctor shifts
+    static final String DATABASE_TABLE_DOCTOR_SHIFT = "DOCTOR_SHIFT";
+    static final String DS_ID = "ds_id";
+    static final String DS_DOCTOR_ID = "ds_doctor_id";
+    static final String DS_START_TIME = "ds_start_time";
+    static final String DS_END_TIME = "ds_end_time";
+    static final String DS_DATE = "ds_date";
+
+
 
 
 
@@ -78,6 +87,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + A_END_TIME + " TEXT NOT NULL, "
             + A_STATUS + " TEXT NOT NULL DEFAULT '" + DEFAULT_STATUS + "');";
 
+
+    private static final String CREATE_DOCTOR_SHIFT_TABLE_QUERY = "CREATE TABLE "
+            + DATABASE_TABLE_DOCTOR_SHIFT + " ("
+            + DS_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + DS_DOCTOR_ID + " INTEGER NOT NULL, "
+            + DS_START_TIME + " TEXT NOT NULL, "
+            + DS_END_TIME + " TEXT NOT NULL, "
+            + DS_DATE + " TEXT NOT NULL, "
+            + "FOREIGN KEY (" + DS_DOCTOR_ID + ") REFERENCES "
+            + DATABASE_TABLE_DOCTOR + "(id));";
+
+
+
+
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -87,6 +110,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_PATIENT_TABLE_QUERY);
         db.execSQL(CREATE_DOCTOR_TABLE_QUERY);
         db.execSQL(CREATE_APPOINTMENT_TABLE_QUERY);
+        db.execSQL(CREATE_DOCTOR_SHIFT_TABLE_QUERY);
     }
 
     @Override
@@ -94,6 +118,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE_PATIENT);
         db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE_DOCTOR);
         db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE_APPOINTMENT);
+        db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE_DOCTOR_SHIFT);
         onCreate(db);
     }
 }

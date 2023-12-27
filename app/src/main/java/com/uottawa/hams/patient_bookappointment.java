@@ -7,9 +7,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.sql.SQLDataException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
 
 public class patient_bookappointment extends AppCompatActivity {
 
@@ -22,6 +26,13 @@ public class patient_bookappointment extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_bookappointment);
+
+        //set the current date as the calendar date
+        TextView currentDateTextView = findViewById(R.id.currentdatetextView);
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy", Locale.getDefault());
+        String currentDate = dateFormat.format(calendar.getTime());
+        currentDateTextView.setText("Current date: " + currentDate);
 
         // Initialize database manager
         dbManager = new DatabaseManager(this);

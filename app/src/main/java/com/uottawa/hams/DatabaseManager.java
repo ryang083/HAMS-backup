@@ -113,6 +113,20 @@ public class DatabaseManager {
         database.insert(DatabaseHelper.DATABASE_TABLE_APPOINTMENT, null, contentValues);
     }
 
+    public void insertDoctorShift(int doctorId, String date, String startTime, String endTime) {
+        if (database == null) {
+            Log.e("DatabaseManager", "Database is not opened");
+            return;
+        }
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(DatabaseHelper.DS_DOCTOR_ID, doctorId);
+        contentValues.put(DatabaseHelper.DS_DATE, date);
+        contentValues.put(DatabaseHelper.DS_START_TIME, startTime);
+        contentValues.put(DatabaseHelper.DS_END_TIME, endTime);
+        database.insert(DatabaseHelper.DATABASE_TABLE_DOCTOR_SHIFT, null, contentValues);
+    }
+
     // Fetch all appointments for a patient
     public Cursor getPatientAppointments(int patientId) {
         if (database == null) {
@@ -284,6 +298,7 @@ public class DatabaseManager {
         return status;
     }
 
+    //for login_patient intent
     public int getPatientIdByEmail(String email) {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         String[] columns = {"id"};
@@ -301,6 +316,7 @@ public class DatabaseManager {
     }
 
 
+    // for doctor_detailinfo.java
     public Cursor getDoctorAppointments() {
         if (database == null) {
             Log.e("DatabaseManager", "Database is not opened");
@@ -328,6 +344,14 @@ public class DatabaseManager {
                 " WHERE a." + DatabaseHelper.A_ID + "=?";
 
         return database.rawQuery(query, new String[]{String.valueOf(appointmentId)});
+    }
+
+    public void updateAppointmentStatus(int appointmentId, String newStatus) {
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(DatabaseHelper.A_STATUS, newStatus);
+        String selection = DatabaseHelper.A_ID + "=?";
+        String[] selectionArgs = { String.valueOf(appointmentId) };
+        database.update(DatabaseHelper.DATABASE_TABLE_APPOINTMENT, contentValues, selection, selectionArgs);
     }
 
 

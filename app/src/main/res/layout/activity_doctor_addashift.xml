@@ -10,13 +10,13 @@
         android:id="@+id/textView27"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Patient - book an appointment"
+        android:text="Doctor - add a shift"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.138"
+        app:layout_constraintHorizontal_bias="0.105"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.06" />
+        app:layout_constraintVertical_bias="0.057" />
 
     <TextView
         android:id="@+id/textView28"
@@ -55,7 +55,7 @@
         app:layout_constraintVertical_bias="0.317" />
 
     <EditText
-        android:id="@+id/a_input_date"
+        android:id="@+id/ds_input_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -69,7 +69,7 @@
         app:layout_constraintVertical_bias="0.137" />
 
     <EditText
-        android:id="@+id/a_input_starttime"
+        android:id="@+id/ds_input_starttime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -83,7 +83,7 @@
         app:layout_constraintVertical_bias="0.22" />
 
     <EditText
-        android:id="@+id/a_input_endtime"
+        android:id="@+id/ds_input_endtime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"

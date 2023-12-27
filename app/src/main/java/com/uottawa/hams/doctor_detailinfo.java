@@ -91,6 +91,7 @@ public class doctor_detailinfo extends AppCompatActivity {
         rejectButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // open the database first before call a method from the database
                 if (doctorId != -1) {
                     DatabaseManager dbManager = new DatabaseManager(doctor_detailinfo.this);
                     try {

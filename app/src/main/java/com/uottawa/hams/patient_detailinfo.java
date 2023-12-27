@@ -39,7 +39,7 @@ public class patient_detailinfo extends AppCompatActivity {
         addressTextView = findViewById(R.id.addressTextView);
         healthCardNumberTextView = findViewById(R.id.healthCardNumberTextView);
 
-        // Retrieve data from the Intent
+        // Retrieve patientId from the Intent - be careful when passing the intent
         Intent intent = getIntent();
         if (intent != null) {
             int patientId = intent.getIntExtra("userID", -1); // Get the patient ID
