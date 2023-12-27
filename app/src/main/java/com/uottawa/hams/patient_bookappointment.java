@@ -17,6 +17,8 @@ import java.util.Locale;
 
 public class patient_bookappointment extends AppCompatActivity {
 
+    //page for patient to book appointments, save data into database
+
     private EditText dateInput, startTimeInput, endTimeInput;
     private Button submitButton;
     private DatabaseManager dbManager;
@@ -27,14 +29,14 @@ public class patient_bookappointment extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_bookappointment);
 
-        //set the current date as the calendar date
+
         TextView currentDateTextView = findViewById(R.id.currentdatetextView);
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy", Locale.getDefault());
         String currentDate = dateFormat.format(calendar.getTime());
         currentDateTextView.setText("Current date: " + currentDate);
 
-        // Initialize database manager
+
         dbManager = new DatabaseManager(this);
         try {
             dbManager.open();
@@ -42,19 +44,19 @@ public class patient_bookappointment extends AppCompatActivity {
             throw new RuntimeException(e);
         }
 
-        // Initialize UI elements
+
         dateInput = findViewById(R.id.a_input_date);
         startTimeInput = findViewById(R.id.a_input_starttime);
         endTimeInput = findViewById(R.id.a_input_endtime);
         submitButton = findViewById(R.id.b_submit_a);
 
-        // Get patient ID from Intent
+
         Intent intent = getIntent();
         if (intent != null && intent.hasExtra("userID")) {
             patientId = intent.getIntExtra("userID", -1);
         }
 
-        // Setting up the button click listener
+
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,26 +70,26 @@ public class patient_bookappointment extends AppCompatActivity {
         String startTime = startTimeInput.getText().toString();
         String endTime = endTimeInput.getText().toString();
 
-        // Validate input (additional validation can be added here)
+
         if (date.isEmpty() || startTime.isEmpty() || endTime.isEmpty()) {
             Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        // Inserting data into the database
+
         try {
             dbManager.open();
             dbManager.insertAppointment(patientId, date, startTime, endTime);
             dbManager.close();
 
-            // Clear input fields or navigate to another screen
+
             clearInputs();
 
-            // Show confirmation
+
             Toast.makeText(this, "Appointment submitted successfully", Toast.LENGTH_SHORT).show();
 
         } catch (Exception e) {
-            // Handle errors
+
             Toast.makeText(this, "Failed to submit appointment: " + e.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }

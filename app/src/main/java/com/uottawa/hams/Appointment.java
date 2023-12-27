@@ -2,7 +2,7 @@ package com.uottawa.hams;
 
 public class Appointment {
 
-    // This class represent a single appointment class.
+    // this class represents a single appointment class
     private int id;
 
     private String firstName;

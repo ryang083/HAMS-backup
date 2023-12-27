@@ -10,6 +10,7 @@ import android.util.Patterns;
 import java.util.regex.Pattern;
 
 public class InputValidator {
+    //this class validates registration inputs
     public static boolean isInputValid(String... inputs) {
         for (String input : inputs) {
             if (TextUtils.isEmpty(input)) {

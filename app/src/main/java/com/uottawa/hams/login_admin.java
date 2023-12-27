@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.google.android.material.button.MaterialButton;
 
 public class login_admin extends AppCompatActivity {
+    //login page for admin
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

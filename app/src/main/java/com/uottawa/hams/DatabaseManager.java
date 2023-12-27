@@ -23,6 +23,7 @@ public class DatabaseManager {
     private Context context;
     private SQLiteDatabase database;
 
+    // this class manage the database, working with different classes to insert/retrive data
 
     public DatabaseManager(Context ctx) {
         context = ctx;
@@ -120,6 +121,7 @@ public class DatabaseManager {
         }
 
         ContentValues contentValues = new ContentValues();
+        //now having trouble getting the doctorId to insert in the shift
         contentValues.put(DatabaseHelper.DS_DOCTOR_ID, doctorId);
         contentValues.put(DatabaseHelper.DS_DATE, date);
         contentValues.put(DatabaseHelper.DS_START_TIME, startTime);

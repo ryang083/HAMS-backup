@@ -13,6 +13,8 @@ import java.sql.SQLDataException;
 
 public class appointment_patientdetail extends AppCompatActivity {
 
+    //this class is to display patient detail for each appointment
+
     private TextView firstNameTextView, lastNameTextView, emailAddressTextView, passwordTextView, phoneNumberTextView, addressTextView, healthCardNumberTextView, dateTextView, startTimeTextView, endTimeTextView;
     private int appointmentId;
     private Button approveButton, rejectButton;

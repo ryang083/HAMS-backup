@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
+    //registration request recycler list adapter
     private Context context;
     private ArrayList userType_id, firstName_id, lastName_id, userId_id;
 

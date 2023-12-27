@@ -5,8 +5,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-// DatabaseHelper.java
+
 public class DatabaseHelper extends SQLiteOpenHelper {
+
+    // this class is for creating database tables: PATIENT_INFO, DOCTOR_INFO, APPOINTMENT_INFO, DOCTOR_SHIFT
     static final String DATABASE_NAME = "HAMS.DB";
     static final int DATABASE_VERSION = 8;
 

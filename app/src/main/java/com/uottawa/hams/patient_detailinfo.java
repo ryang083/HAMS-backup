@@ -15,6 +15,8 @@ import java.sql.SQLDataException;
 
 public class patient_detailinfo extends AppCompatActivity {
 
+    //this class display doctor registration info
+
     private TextView firstNameTextView;
     private TextView lastNameTextView;
     private TextView emailAddressTextView;
@@ -30,7 +32,7 @@ public class patient_detailinfo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_detailinfo);
 
-        // Initialize TextViews
+
         firstNameTextView = findViewById(R.id.firstNameTextView);
         lastNameTextView = findViewById(R.id.lastNameTextView);
         emailAddressTextView = findViewById(R.id.emailAddressTextView);

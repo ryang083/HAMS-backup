@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class DoctorAppointmentsAdapter extends RecyclerView.Adapter<DoctorAppointmentsAdapter.MyViewHolder> {
+
+    //this class is a recycler list adapter
     private Context context;
     private ArrayList<Appointment> appointments;
 

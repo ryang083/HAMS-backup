@@ -13,6 +13,8 @@ import android.widget.TextView;
 import java.sql.SQLDataException;
 
 public class doctor_detailinfo extends AppCompatActivity {
+
+    //this class display doctor registration info
     private TextView firstNameTextView;
     private TextView lastNameTextView;
     private TextView emailAddressTextView;
