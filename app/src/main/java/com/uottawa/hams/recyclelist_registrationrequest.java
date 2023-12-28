@@ -32,7 +32,7 @@ public class recyclelist_registrationrequest extends AppCompatActivity {
         setContentView(R.layout.activity_recyclelist_registrationrequest);
         DB = new DatabaseManager(this);
         try {
-            DB.open(); // Open the database
+            DB.open();
         } catch (Exception e) {
             Log.e("recyclelist_registrationrequest", "Error opening database", e);
         }
@@ -54,7 +54,7 @@ public class recyclelist_registrationrequest extends AppCompatActivity {
                 } else if ("Doctor".equals(selectedUserType)) {
                     intent = new Intent(recyclelist_registrationrequest.this, doctor_detailinfo.class);
                 } else {
-                    return; // Handle unexpected user type
+                    return;
                 }
 
                 intent.putExtra("userID", Integer.parseInt(userId.get(position)));
@@ -73,7 +73,7 @@ public class recyclelist_registrationrequest extends AppCompatActivity {
 
     protected void onResume() {
         super.onResume();
-        refreshData(); // Refresh your data whenever the activity resumes
+        refreshData();
     }
 
     private void refreshData() {
@@ -98,7 +98,7 @@ public class recyclelist_registrationrequest extends AppCompatActivity {
                 this.lastName.add(lastName);
                 this.userId.add(userId);
             } while (cursor.moveToNext());
-            cursor.close(); // Close the cursor after use
+            cursor.close();
         }
 
         adapter.notifyDataSetChanged();

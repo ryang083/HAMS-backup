@@ -36,8 +36,6 @@ public class DatabaseManager {
             database = dbHelper.getWritableDatabase();
         } catch (SQLException e) {
             Log.e("DatabaseManager", "Error opening database: " + e.getMessage());
-            // Optionally, you can rethrow a RuntimeException
-            // throw new RuntimeException("Error opening database", e);
         }
         return this;
     }

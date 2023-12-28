@@ -42,7 +42,7 @@ public class DoctorAppointmentsAdapter extends RecyclerView.Adapter<DoctorAppoin
         holder.endTime.setText(appointment.getEndTime());
         holder.status.setText(appointment.getStatus());
 
-        // Set the click listener for the item view
+
         holder.itemView.setOnClickListener(v -> {
             if (listener != null) {
                 Appointment clickedAppointment = appointments.get(holder.getAdapterPosition());
@@ -74,7 +74,7 @@ public class DoctorAppointmentsAdapter extends RecyclerView.Adapter<DoctorAppoin
         void onAppointmentClick(Appointment appointment);
     }
 
-    // Method to update the data in the adapter
+    // Method to update the data in the adapter - for appointment recycler list
     public void updateData(ArrayList<Appointment> newAppointments) {
         appointments.clear();
         appointments.addAll(newAppointments);

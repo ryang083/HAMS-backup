@@ -34,7 +34,7 @@ public class recyclelist_doctorappointments extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerview1);
 
         adapter = new DoctorAppointmentsAdapter(this, appointments, appointment -> {
-            // Code to open detail activity
+
             Intent intent = new Intent(recyclelist_doctorappointments.this, appointment_patientdetail.class);
             intent.putExtra("appointmentId", appointment.getId());
             startActivity(intent);

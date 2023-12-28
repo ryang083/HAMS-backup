@@ -23,11 +23,12 @@ public class recyclelist_rejectedrequest extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recyclelist_rejectedrequest); // Use an appropriate layout
         DB = new DatabaseManager(this);
+        // make sure to open the database before operations
         try {
-            DB.open(); // Open the database
+            DB.open();
         } catch (Exception e) {
             Log.e("recyclelist_rejectedrequest", "Error opening database", e);
-            // Handle the error or finish the activity
+
         }
         userType = new ArrayList<>();
         firstName = new ArrayList<>();
@@ -55,7 +56,7 @@ public class recyclelist_rejectedrequest extends AppCompatActivity {
             }
         });
 
-        // Set up the adapter and RecyclerView as before
+
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         displaydata();

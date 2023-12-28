@@ -26,7 +26,7 @@ public class login_doctor extends AppCompatActivity {
 
         dbManager = new DatabaseManager(this);
         try {
-            dbManager.open(); // Open the database
+            dbManager.open();
         } catch (Exception e) {
             Log.e("login_doctor", "Error opening database", e);
         }
@@ -52,7 +52,7 @@ public class login_doctor extends AppCompatActivity {
                 String status = dbManager.getDoctorRegistrationStatus(email);
                 navigateBasedOnStatus(status, "Doctor");
             } else {
-                // Login failed, show error
+
                 Toast.makeText(this, "Invalid email or password.", Toast.LENGTH_SHORT).show();
             }
         } else {
@@ -70,7 +70,7 @@ public class login_doctor extends AppCompatActivity {
         } else if ("REJECTED_STATUS".equals(status)) {
             intent = new Intent(this, request_rejected.class);
         } else {
-            return; // Handle unexpected status
+            return;
         }
         startActivity(intent);
         finish();

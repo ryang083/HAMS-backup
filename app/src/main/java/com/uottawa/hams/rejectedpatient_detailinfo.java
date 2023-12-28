@@ -28,7 +28,7 @@ public class rejectedpatient_detailinfo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rejectedpatient_detailinfo);
 
-        // Initialize TextViews
+
         firstNameTextView = findViewById(R.id.firstNameTextView);
         lastNameTextView = findViewById(R.id.lastNameTextView);
         emailAddressTextView = findViewById(R.id.emailAddressTextView);
@@ -37,7 +37,7 @@ public class rejectedpatient_detailinfo extends AppCompatActivity {
         addressTextView = findViewById(R.id.addressTextView);
         healthCardNumberTextView = findViewById(R.id.healthCardNumberTextView);
 
-        // Retrieve data from the Intent
+
         Intent intent = getIntent();
         if (intent != null) {
             int patientId = intent.getIntExtra("userID", -1); // Get the patient ID

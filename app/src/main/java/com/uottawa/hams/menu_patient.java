@@ -38,7 +38,6 @@ public class menu_patient extends AppCompatActivity {
                     intent.putExtra("userID", patientId);
                     startActivity(intent);
                 } else {
-                    // Handle the case where patientId is not available
                     Toast.makeText(menu_patient.this, "Error: Patient ID not found.", Toast.LENGTH_SHORT).show();
                 }
             }

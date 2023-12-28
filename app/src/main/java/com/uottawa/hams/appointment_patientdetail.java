@@ -24,7 +24,7 @@ public class appointment_patientdetail extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_appointment_patientdetail);
 
-        // Initialize TextViews
+
         firstNameTextView = findViewById(R.id.firstNameTextView);
         lastNameTextView = findViewById(R.id.lastNameTextView);
         emailAddressTextView = findViewById(R.id.emailAddressTextView);

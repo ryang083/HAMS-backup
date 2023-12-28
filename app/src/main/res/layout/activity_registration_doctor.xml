@@ -5,23 +5,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".registration_doctor">
+
     <EditText
         android:id="@+id/d_input_password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="162dp"
+        android:layout_height="51dp"
         android:layout_marginBottom="13dp"
         android:ems="10"
         android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/d_input_phonenum"
         app:layout_constraintEnd_toEndOf="@+id/d_input_email"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/d_input_email"
         app:layout_constraintTop_toBottomOf="@+id/d_input_email" />
 
     <TextView
         android:id="@+id/textView8"
-        android:layout_width="294dp"
-        android:layout_height="0dp"
+        android:layout_width="301dp"
+        android:layout_height="48dp"
         android:layout_marginTop="38dp"
         android:layout_marginEnd="36dp"
         android:layout_marginBottom="28dp"
@@ -44,8 +45,8 @@
 
     <EditText
         android:id="@+id/d_input_firstname"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="176dp"
+        android:layout_height="56dp"
         android:layout_marginEnd="33dp"
         android:layout_marginBottom="1dp"
         android:ems="10"
@@ -130,8 +131,8 @@
 
     <EditText
         android:id="@+id/d_input_lastname"
-        android:layout_width="212dp"
-        android:layout_height="0dp"
+        android:layout_width="183dp"
+        android:layout_height="54dp"
         android:layout_marginBottom="12dp"
         android:ems="10"
         android:inputType="text"
@@ -141,8 +142,8 @@
 
     <EditText
         android:id="@+id/d_input_email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="173dp"
+        android:layout_height="48dp"
         android:layout_marginBottom="5dp"
         android:ems="10"
         android:inputType="text"
@@ -152,8 +153,8 @@
 
     <EditText
         android:id="@+id/d_input_phonenum"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="157dp"
+        android:layout_height="50dp"
         android:layout_marginBottom="14dp"
         android:ems="10"
         android:inputType="text"
@@ -163,8 +164,8 @@
 
     <EditText
         android:id="@+id/d_input_address"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="158dp"
+        android:layout_height="47dp"
         android:layout_marginBottom="22dp"
         android:ems="10"
         android:inputType="text"
@@ -174,8 +175,8 @@
 
     <EditText
         android:id="@+id/d_input_healthcardnum"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="168dp"
+        android:layout_height="49dp"
         android:layout_marginBottom="5dp"
         android:ems="10"
         android:inputType="text"
@@ -198,8 +199,8 @@
 
     <EditText
         android:id="@+id/d_input_specialties"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="168dp"
+        android:layout_height="46dp"
         android:layout_marginBottom="83dp"
         android:ems="10"
         android:inputType="text"

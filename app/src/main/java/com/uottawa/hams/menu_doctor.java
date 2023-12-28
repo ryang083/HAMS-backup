@@ -37,7 +37,7 @@ public class menu_doctor extends AppCompatActivity {
         upcomingshift1 = findViewById(R.id.b_upcomingshift);
         upcomingshift1.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                //will have to change _addashift to something else later
+                //will have to change _ addashift to something else later
                 Intent intent = new Intent (menu_doctor.this, doctor_addashift.class);
                 startActivity(intent);
             }

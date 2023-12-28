@@ -46,7 +46,7 @@ public class registration_doctor extends AppCompatActivity {
         sub_dr = findViewById(R.id.b_submit_DR);
         sub_dr.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                // Insert data into the database
+
                 String firstName = editD_FirstName.getText().toString();
                 String lastName = editD_LastName.getText().toString();
                 String emailAddress = editD_EmailAddress.getText().toString();
@@ -56,7 +56,7 @@ public class registration_doctor extends AppCompatActivity {
                 String employeeNum = editD_EmployeeNum.getText().toString();
                 String specialties = editD_Specialties.getText().toString();
 
-                // Validate and insert data into the database
+
                 if (InputValidator.isDoctorInputValid(firstName, lastName, emailAddress, password,
                         phoneNumber, address, employeeNum, specialties)) {
                     dbManager.insertDoctor(firstName, lastName, emailAddress, password,
@@ -65,7 +65,6 @@ public class registration_doctor extends AppCompatActivity {
                     startActivity(intent);
                     Toast.makeText(registration_doctor.this, "Registration successful!", Toast.LENGTH_SHORT).show();
                 } else {
-                    // Handle invalid input, show a message, or log an error
                     Toast.makeText(registration_doctor.this, "Invalid input. Please check your data.", Toast.LENGTH_SHORT).show();
                 }
             }

@@ -58,14 +58,14 @@ public class registration_patient extends AppCompatActivity {
                 String address = editP_Address.getText().toString();
                 String healthCardNum = editP_HealthCardNum.getText().toString();
 
-                // Validate and insert data into the database
+
                 if (InputValidator.isPatientInputValid(firstName, lastName, emailAddress, password, phoneNumber, address, healthCardNum)) {
                     dbManager.insertPatient(firstName, lastName, emailAddress, password, phoneNumber, address, healthCardNum);
                     Intent intent = new Intent(registration_patient.this, requestsubmitted_pleasewait.class);
                     startActivity(intent);
                     Toast.makeText(registration_patient.this, "Registration successful!", Toast.LENGTH_SHORT).show();
                 } else {
-                    // Handle invalid input, show a message, or log an error
+
                     Toast.makeText(registration_patient.this, "Invalid input. Please check your data.", Toast.LENGTH_SHORT).show();
                 }
             }

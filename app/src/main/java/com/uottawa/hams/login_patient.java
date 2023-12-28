@@ -26,7 +26,7 @@ public class login_patient extends AppCompatActivity {
         setContentView(R.layout.activity_login_patient);
         dbManager = new DatabaseManager(this);
         try {
-            dbManager.open(); // Open the database
+            dbManager.open();
         } catch (Exception e) {
             Log.e("login_patient", "Error opening database", e);
         }
@@ -51,9 +51,7 @@ public class login_patient extends AppCompatActivity {
         if (!TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)) {
             if (dbManager.validatePatient(email, password)) {
                 // Fetching patient ID based on the email
-                patientId = dbManager.getPatientIdByEmail(email); // Implement this method in DatabaseManager
-
-                // Fetch registration status and navigate accordingly
+                patientId = dbManager.getPatientIdByEmail(email);
                 String status = dbManager.getPatientRegistrationStatus(email);
                 navigateBasedOnStatus(status, "Patient");
             } else {

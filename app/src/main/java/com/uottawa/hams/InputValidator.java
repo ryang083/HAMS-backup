@@ -50,8 +50,8 @@ public class InputValidator {
                                              String d_employeenum, String d_specialties) {
         return isInputValid(d_firstname, d_lastname, d_password, d_phonenumber, d_address, d_employeenum, d_specialties)
                 && isValidEmail(d_emailaddress)
-                && isInteger(d_phonenumber)  // Check if phone number is an integer
-                && isInteger(d_employeenum);  // Check if employee number is an integer
+                && isInteger(d_phonenumber)
+                && isInteger(d_employeenum);
     }
 
 

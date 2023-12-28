@@ -26,7 +26,7 @@ public class Appointment {
         return id;
     }
 
-    // Getters
+
     public String getFirstName() {
         return firstName;
     }
