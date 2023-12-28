@@ -15,7 +15,7 @@ import java.sql.SQLDataException;
 
 public class patient_detailinfo extends AppCompatActivity {
 
-    //this class display doctor registration info
+    //this class display patient registration info
 
     private TextView firstNameTextView;
     private TextView lastNameTextView;

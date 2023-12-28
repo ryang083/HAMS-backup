@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 public class welcome_administrator extends AppCompatActivity {
+    // xml to display a message
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

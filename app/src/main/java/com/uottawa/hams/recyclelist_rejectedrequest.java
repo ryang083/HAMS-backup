@@ -12,7 +12,7 @@ import android.util.Log;
 import java.util.ArrayList;
 
 public class recyclelist_rejectedrequest extends AppCompatActivity {
-
+    // works with userentry.xml and MyAdapter
     RecyclerView recyclerView;
     ArrayList<String> userType, firstName, lastName, userId;
     DatabaseManager DB;
@@ -48,7 +48,7 @@ public class recyclelist_rejectedrequest extends AppCompatActivity {
                 } else if ("Doctor".equals(selectedUserType)) {
                     intent = new Intent(recyclelist_rejectedrequest.this, rejecteddoctor_detailinfo.class);
                 } else {
-                    return; // Handle unexpected user type
+                    return;
                 }
 
                 intent.putExtra("userID", Integer.parseInt(userId.get(position)));

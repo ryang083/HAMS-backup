@@ -47,9 +47,6 @@ public class Appointment {
         return endTime;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
 
     public String getStatus() {
         return status;

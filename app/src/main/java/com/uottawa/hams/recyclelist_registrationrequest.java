@@ -19,6 +19,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class recyclelist_registrationrequest extends AppCompatActivity {
+    // works with userentry.xml and MyAdapter
     RecyclerView recyclerView;
     ArrayList<String> userType, firstName, lastName, userId;
     DatabaseManager DB;

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 public class request_notprocesssedyet extends AppCompatActivity {
+    // xml to display a message
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

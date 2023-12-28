@@ -12,6 +12,7 @@ import android.widget.TextView;
 import java.sql.SQLDataException;
 
 public class rejectedpatient_detailinfo extends AppCompatActivity {
+    // show the detail info of the patient when click the item
 
     private TextView firstNameTextView;
     private TextView lastNameTextView;

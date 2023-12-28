@@ -17,7 +17,7 @@ import java.util.Locale;
 
 public class patient_bookappointment extends AppCompatActivity {
 
-    //page for patient to book appointments, save data into database
+    // page for patient to book appointments, save data into database
 
     private EditText dateInput, startTimeInput, endTimeInput;
     private Button submitButton;

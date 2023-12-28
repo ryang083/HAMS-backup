@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class welcome_patient extends AppCompatActivity {
+    // display a message and open the menu
 
     private Button mainmenu1;
     private int patientId;

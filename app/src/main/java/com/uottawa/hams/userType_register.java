@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class userType_register extends AppCompatActivity {
+    // choose usertype to register
     private Button patient;
     private Button doctor;
 

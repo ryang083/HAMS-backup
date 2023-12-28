@@ -9,8 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-// registration_doctor.java
+
 public class registration_doctor extends AppCompatActivity {
+    // save doctor registration data into database
     private Button sub_dr;
     EditText editD_FirstName;
     EditText editD_LastName;

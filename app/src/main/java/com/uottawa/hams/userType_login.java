@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class userType_login extends AppCompatActivity {
+    // choose usertype to login
     private Button admin1;
     private Button patient1;
     private Button doctor1;

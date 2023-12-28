@@ -13,6 +13,7 @@ import android.util.Log;
 import java.util.ArrayList;
 
 public class recyclelist_doctorappointments extends AppCompatActivity {
+    // works with entrydocappointment.xml and DoctorAppointmentsAdapter class
     RecyclerView recyclerView;
     ArrayList<Appointment> appointments;
     DoctorAppointmentsAdapter adapter;

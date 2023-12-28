@@ -12,6 +12,7 @@ import android.widget.TextView;
 import java.sql.SQLDataException;
 
 public class rejecteddoctor_detailinfo extends AppCompatActivity {
+    // show the detail info of the doctor when click the item
 
     private TextView firstNameTextView;
     private TextView lastNameTextView;
@@ -83,6 +84,7 @@ public class rejecteddoctor_detailinfo extends AppCompatActivity {
                     }
                     dbManager.updateDoctorStatus(doctorId, "APPROVED_STATUS");
                     dbManager.close();
+                    // use finish() to have the item in the list immediately disappear
                     finish();
                 }
             }

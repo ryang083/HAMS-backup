@@ -12,7 +12,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     static final String DATABASE_NAME = "HAMS.DB";
     static final int DATABASE_VERSION = 8;
 
-    // Table for patient registration
+    // variables for patient registration
     static final String DATABASE_TABLE_PATIENT = "PATIENT_INFO";
     static final String P_FN = "p_firstname";
     static final String P_LN = "p_lastname";
@@ -22,7 +22,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     static final String P_ADDRESS = "p_address";
     static final String P_HCNUM = "p_healthcardnum";
 
-    // Table for doctor registration
+    // variables for doctor registration
     static final String DATABASE_TABLE_DOCTOR = "DOCTOR_INFO";
     static final String D_FN = "d_firstname";
     static final String D_LN = "d_lastname";
@@ -33,11 +33,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     static final String D_EMPLOYEE_NUM = "d_employeenum";
     static final String D_SPECIALTIES = "d_specialties";
 
-    // Column for registration status
+    // variables for registration status
     static final String REGISTRATION_STATUS = "registration_status";
     static final String DEFAULT_STATUS = "NotProcessedYet";
 
-    // Table for Appointments
+    // variables for Appointments
 
     static final String DATABASE_TABLE_APPOINTMENT = "APPOINTMENT_INFO";
     static final String A_ID = "a_id";
@@ -47,7 +47,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     static final String A_END_TIME = "a_end_time";
     static final String A_STATUS = "a_status";
 
-    //Table for doctor shifts
+    // variables for doctor shifts
     static final String DATABASE_TABLE_DOCTOR_SHIFT = "DOCTOR_SHIFT";
     static final String DS_ID = "ds_id";
     static final String DS_DOCTOR_ID = "ds_doctor_id";
@@ -56,10 +56,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     static final String DS_DATE = "ds_date";
 
 
-
-
-
-
+    // Create tables
     private static final String CREATE_PATIENT_TABLE_QUERY = "CREATE TABLE " + DATABASE_TABLE_PATIENT + " ("+ "id INTEGER PRIMARY KEY AUTOINCREMENT, "
             + P_FN + " TEXT NOT NULL, "
             + P_LN + " TEXT NOT NULL, "

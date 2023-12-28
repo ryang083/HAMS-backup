@@ -16,6 +16,7 @@ import android.widget.Toast;
 import java.util.regex.Pattern;
 
 public class registration_patient extends AppCompatActivity {
+    // save patient registration data into database
     private Button sub_pr;
     EditText editP_FirstName;
     EditText editP_LastName;
